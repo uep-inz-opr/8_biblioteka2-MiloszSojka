@@ -48,12 +48,13 @@ class Uzytkownik:
         return False
     
     def odddaj(self):
-        if self.ksiazka in uzytkownicy[self.nazwa]:
-            uzytkownicy[self.nazwa].remove(self.ksiazka)
-            for ee_key,ee_value in egzemplarze.items():
-                if eval(ee_key)[0] == self.ksiazka:
-                    egzemplarze[ee_key]+=1
-            return True
+        if self.nazwa in uzytkownicy.keys():
+            if self.ksiazka in uzytkownicy[self.nazwa]:
+                uzytkownicy[self.nazwa].remove(self.ksiazka)
+                for ee_key,ee_value in egzemplarze.items():
+                    if eval(ee_key)[0] == self.ksiazka:
+                        egzemplarze[ee_key]+=1
+                return True
         return False
 
 for aa in range(l_akcji):
@@ -75,7 +76,6 @@ for aa in range(l_akcji):
     
     
     elif akcja[0] == 'oddaj':
-
         print(Uzytkownik(akcja[1],akcja[2]).odddaj())
         
     else:
